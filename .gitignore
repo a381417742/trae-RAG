@@ -226,13 +226,16 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Upload scripts (local use only)
+# Upload scripts (local use only)# 上传脚本和指南
 upload_to_github.sh
 GitHub上传指南.md
 
 # 项目文档目录
 docs/
 
+# 项目内部文件
+关键决策点
+项目框架.txt
 # ===========================================
 # 临时文件
 # ===========================================
