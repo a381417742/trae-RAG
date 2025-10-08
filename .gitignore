@@ -228,6 +228,10 @@ dist
 
 # Upload scripts (local use only)
 upload_to_github.sh
+GitHub上传指南.md
+
+# 项目文档目录
+docs/
 
 # ===========================================
 # 临时文件
