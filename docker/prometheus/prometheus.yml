@@ -1,0 +1,49 @@
+# RAG知识库问答系统 - Prometheus监控配置
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Prometheus自身监控
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # FastAPI应用监控
+  - job_name: 'fastapi-app'
+    static_configs:
+      - targets: ['fastapi-app:8001']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Redis监控 (如果启用了redis_exporter)
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Chroma监控 (如果支持metrics)
+  - job_name: 'chroma'
+    static_configs:
+      - targets: ['chroma:8000']
+    metrics_path: '/api/v1/metrics'
+    scrape_interval: 30s
+
+  # Nginx监控 (如果启用了nginx_exporter)
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:80']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # 系统监控 (如果启用了node_exporter)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['host.docker.internal:9100']
+    scrape_interval: 15s
